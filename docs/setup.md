@@ -7,9 +7,8 @@ sudo usermod -aG kvm $USER
 ```
    
 
-# Log out and back in
-
-# Verify KVM Installation
+Log out and back in
+Verify KVM Installation
 First, let's make sure everything installed correctly:
 
 # Check if KVM modules are loaded
@@ -30,10 +29,9 @@ sudo systemctl enable libvirtd
 # Create a directory for ISOs
 ```mkdir -p ~/VMs/ISOs
 cd ~/VMs/ISOs
-```
 
-# Download Ubuntu Server 22.04 LTS
-```wget https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso```
+wget https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso
+```
 
 # Verify download completed
 ```ls -lh ubuntu-22.04.5-live-server-amd64.iso```
