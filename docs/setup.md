@@ -66,7 +66,8 @@ Memory: 3072 MB (3GB)
 CPUs: 2
 
 Click Forward
-3.4 Storage:
+
+# 3.4 Storage:
 
 Create disk image: 40 GB
 Click Forward
