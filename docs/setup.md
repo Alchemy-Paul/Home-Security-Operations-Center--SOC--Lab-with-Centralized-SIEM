@@ -62,7 +62,7 @@ Click Forward
 Based on your total RAM:
 If you have 8GB total:
 
-Memory: 3072 MB (3GB)
+Memory: 3072 MB (3GB) (minimum)
 CPUs: 2
 
 Click Forward
