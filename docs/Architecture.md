@@ -1,0 +1,68 @@
+## Architecture
+```
+[Pop!_OS Host] ──► [Splunk Server VM] ◄── [Additional VMs]
+  (Forwarder)         (Indexer)              (Forwarders)
+       │                  │                       │
+       └──────────────────┴───────────────────────┘
+                    Port 9997
+```
+
+## Features
+- Real-time security event monitoring
+- Automated threat detection and alerting
+- Interactive security dashboards
+- Multi-host correlation analysis
+- Centralized log aggregation
+- Agent-based data collection
+
+## Technical Stack
+- **SIEM Platform:** Splunk Free 9.1.2
+- **Virtualization:** KVM/QEMU on Pop!_OS 24
+- **Operating System:** Ubuntu Server 22.04 LTS
+- **Data Collection:** Splunk Universal Forwarder
+- **Search Language:** SPL (Splunk Processing Language)
+
+## Project Components
+
+### 1. Central SIEM Infrastructure
+- Splunk Enterprise deployed on dedicated VM
+- 4GB RAM, 2 vCPUs, 40GB storage
+- Receiving data on port 9997
+- Web interface on port 8000
+
+### 2. Distributed Forwarders
+- Universal Forwarders on all monitored systems
+- Collecting authentication, system, and application logs
+- Lightweight deployment (~50-100MB RAM per agent)
+- Automatic failover and buffering
+
+### 3. Detection Rules
+Implemented correlation searches including:
+- Brute force authentication attempts
+- Successful compromise after failed logins
+- Privilege escalation patterns
+- Lateral movement detection
+- Anomalous login times
+- Data exfiltration indicators
+
+### 4. Monitoring Dashboards
+- Security Events Overview
+- Failed Authentication Tracker
+- Sudo Command Monitoring
+- Multi-host Activity Correlation
+- Forwarder Health Status
+
+## Skills Developed
+- SIEM deployment and configuration
+- Log analysis and correlation
+- Threat detection engineering
+- Security event investigation
+- SPL query development
+- Linux system administration
+- Virtualization management
+- Network security monitoring
+
+
+
+**Author:** Okoh Paul Ekondu  
+**Date:** January 2026
