@@ -192,7 +192,7 @@ After reboot, login with your credentials:
 ```sudo dpkg -i splunkforwarder-9.1.2-2b6e6e66d8a6-linux-2.6-amd64.deb```
 
 # Configure forwarder to send data to indexer
-# Replace <INDEXER_IP> with your Splunk server's IP address
+# Replace <INDEXER_IP> with your Splunk server's IP address note that changeme (is your set password)
 ```sudo /opt/splunkforwarder/bin/splunk add forward-server <INDEXER_IP>:9997 -auth admin:changeme```
 
 # Set up data inputs (example: system logs)
