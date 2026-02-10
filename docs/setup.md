@@ -208,4 +208,4 @@ After reboot, login with your credentials:
 # Verify forwarder connection
 # On Splunk server, check Forwarder Management in Settings > Forwarder Management
 
-# Repeat for additional forwarder VMs as needed
+# Setting up DASHBORD
