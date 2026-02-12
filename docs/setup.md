@@ -208,4 +208,169 @@ After reboot, login with your credentials:
 # Verify forwarder connection
 # On Splunk server, check Forwarder Management in Settings > Forwarder Management
 
-# Setting up DASHBORD
+# Step 8: Create Splunk Dashboards
+
+## 8.1 Access Splunk Web Interface
+```
+1. Open web browser on your host machine
+2. Navigate to http://<SPLUNK_SERVER_IP>:8000
+3. Login with admin credentials (admin/changeme - or your new password)
+```
+
+## 8.2 Create Security Overview Dashboard
+
+**Via GUI:**
+```
+1. Click "Dashboards" in top navigation
+2. Click "Create New Dashboard"
+3. Enter Dashboard Name: "Security Operations Overview"
+4. Choose layout: Classic (2-column)
+5. Click "Create Dashboard"
+```
+
+**Add Panel 1: Authentication Events**
+```
+1. Click "Edit" (top right)
+2. Click "Add Panel" > "New"
+3. Paste this SPL query:
+   index=_internal group=queue name=tcpout_queue | stats count by host
+4. Click "Visualize"
+5. Choose "Column Chart" visualization
+6. Click "Save"
+7. Title: "Forwarder Status"
+```
+
+**Add Panel 2: Failed Authentication Attempts**
+```
+1. Click "Add Panel" > "New"
+2. Paste this SPL query:
+   index=main source=/var/log/auth.log "Failed password" | stats count by host
+3. Choose "Table" visualization
+4. Title: "Failed Login Attempts"
+```
+
+**Add Panel 3: System Events Timeline**
+```
+1. Click "Add Panel" > "New"
+2. Paste this SPL query:
+   index=main | timechart count by host
+3. Choose "Line Chart" visualization
+4. Title: "Event Activity Timeline"
+```
+
+## 8.3 Create Custom Dashboard via XML (Advanced)
+
+**On Splunk Server, create dashboard XML:**
+```bash
+sudo vim /opt/splunk/etc/apps/search/local/data/ui/views/soc_dashboard.xml
+```
+
+**Paste this content:**
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard version="1.1">
+  <label>SOC Security Dashboard</label>
+  <description>Real-time security monitoring and threat detection</description>
+  <refresh>30</refresh>
+  
+  <row>
+    <panel>
+      <title>Authentication Failures by Host</title>
+      <single>
+        <search>
+          <query>index=main source=/var/log/auth.log "Failed password" | stats count</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <refresh>5m</refresh>
+        </search>
+        <option name="drilldown">all</option>
+      </single>
+    </panel>
+    
+    <panel>
+      <title>Connected Forwarders</title>
+      <single>
+        <search>
+          <query>index=_internal group=queue name=tcpout_queue | stats count</query>
+          <earliest>-1h</earliest>
+          <latest>now</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+  
+  <row>
+    <panel>
+      <title>Failed Login Attempts (Last 24h)</title>
+      <table>
+        <search>
+          <query>index=main source=/var/log/auth.log "Failed password" | stats count by host, user | sort - count</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="count">20</option>
+      </table>
+    </panel>
+  </row>
+  
+  <row>
+    <panel>
+      <title>Event Volume by Host</title>
+      <chart>
+        <search>
+          <query>index=main | timechart count by host</query>
+          <earliest>-7d@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisTitleY.text">Event Count</option>
+      </chart>
+    </panel>
+  </row>
+</dashboard>
+```
+
+**Save and exit (vim commands):**
+```
+Press ESC
+Type :wq
+Press ENTER
+```
+
+## 8.4 Refresh Splunk and View Dashboard
+
+```bash
+# Restart Splunk to load new dashboard
+sudo /opt/splunk/bin/splunk restart
+
+# Or just refresh in Web UI: Settings > General Settings > Restart Splunk
+```
+
+**Access your custom dashboard:**
+```
+1. Login to Splunk web (http://<IP>:8000)
+2. Click "Dashboards"
+3. Click "SOC Security Dashboard"
+4. Monitor real-time security events!
+```
+
+## 8.5 Verify Data is Being Collected
+
+Before dashboards display data, verify logs are being ingested:
+
+```
+1. Go to Splunk web interface
+2. Click "Search & Reporting"
+3. Run this query: index=* | stats count by host
+4. Should return results from forwarders and server
+5. If no data, check forwarder connectivity in Settings > Forwarder Management
+```
+
+## Dashboard Best Practices
+
+- **Refresh Rate:** Set to 5-10 minutes for dashboards with heavy queries
+- **Time Range:** Use appropriate ranges (-24h for daily analysis, -7d for trends)
+- **Alerts:** Add alerts to high-risk panels (Settings > Searches, Reports and Alerts)
+- **Permissions:** Share dashboards with SOC team (Sharing & Permissions)
