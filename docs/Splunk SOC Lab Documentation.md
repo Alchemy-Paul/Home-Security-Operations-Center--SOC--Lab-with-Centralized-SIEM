@@ -30,12 +30,16 @@ yup i forgot my password and had to reset
 
 
 ## 3. The Failed Login Dashboard
-[setup.md]
+A custom XML dashboard was created to visualize security events. [setup.md]
+
+![dashboard](IMG/dashboard.png)
 
 ## 4. Attack Simulation (The Brute Force)
 To test the pipeline, a bash loop was executed on the host machine to simulate a high-volume credential stuffing attack:
 
 ```for i in {1..100}; do su - root_hacker_demo -c "exit" 2>/dev/null; done```
+
+![Bruteforce](IMG/brutefore execute 2026-02-12_07-25.png)
 
 ## 5. Results & Visualizations
 - Successful Pipeline: Data moved from /var/log/auth.log -> UF -> VM Indexer.
@@ -43,3 +47,4 @@ To test the pipeline, a bash loop was executed on the host machine to simulate a
 - Detection: The dashboard successfully showed a spike of 152 events, crossing the critical threshold and turning the display red.
 
 - Field Extraction: Identified targeted users such as whoopsie and root_hacker_demo.
+![Visualisation](IMG/new spike 2026-02-12_06-50.png)
