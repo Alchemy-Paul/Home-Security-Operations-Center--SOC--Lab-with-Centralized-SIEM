@@ -49,5 +49,8 @@ To test the pipeline, a bash loop was executed on the host machine to simulate a
 - Field Extraction: Identified targeted users such as whoopsie and root_hacker_demo.
 ![Visualisation](IMG/new spike 2026-02-12_06-50.png)
 
-## Setting up security Alert
-
+## 6. Alerting Logic
+* **Trigger:** Real-time monitoring of `index=main`.
+* **Threshold:** > 10 failed attempts within a 1-minute window.
+* **Throttling:** 60-second suppression to prevent alert fatigue.
+* **Action:** Logged to "Triggered Alerts" dashboard for incident response.
