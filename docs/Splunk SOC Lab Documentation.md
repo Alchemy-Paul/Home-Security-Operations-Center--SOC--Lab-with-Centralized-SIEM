@@ -32,7 +32,7 @@ yup i forgot my password and had to reset
 ## 3. The Failed Login Dashboard
 A custom XML dashboard was created to visualize security events. [setup.md]
 
-![dashboard](IMG/dashboard.png)
+![dashboard](../IMG/spike%202026-02-12_06-49.pngIMG/dashboard.png)
 
 ## 4. Attack Simulation (The Brute Force)
 To test the pipeline, a bash loop was executed on the host machine to simulate a high-volume credential stuffing attack:
