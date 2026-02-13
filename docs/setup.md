@@ -374,3 +374,7 @@ Before dashboards display data, verify logs are being ingested:
 - **Time Range:** Use appropriate ranges (-24h for daily analysis, -7d for trends)
 - **Alerts:** Add alerts to high-risk panels (Settings > Searches, Reports and Alerts)
 - **Permissions:** Share dashboards with SOC team (Sharing & Permissions)
+
+## Example Dashboard
+
+![Dashboard](../IMG/dashboard.png)

@@ -52,6 +52,8 @@ Implemented correlation searches including:
 - Multi-host Activity Correlation
 - Forwarder Health Status
 
+![Dashboard](../IMG/dashboard.png)
+
 ## Skills Developed
 - SIEM deployment and configuration
 - Log analysis and correlation
