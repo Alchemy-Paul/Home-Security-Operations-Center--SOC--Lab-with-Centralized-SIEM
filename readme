@@ -1,6 +1,6 @@
 # Home Security Operations Center (SOC) Lab with Centralized SIEM
 
 ## Overview
-Enterprise-grade Security Operations Center environment for hands-on SOC analyst training, featuring centralized SIEM deployment, distributed log collection, and advanced threat detection capabilities.
+Enterprise-grade Security Operations Center environment for hands-on SOC analyst training, featuring centralized SIEM deployment using Splunk, distributed log collection, and advanced threat detection capabilities.
 
 ![Dashboard](IMG/dashboard.png)
