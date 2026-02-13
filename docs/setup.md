@@ -150,7 +150,7 @@ After reboot, login with your credentials:
 
 # Step 6: Install Splunk Enterprise on Splunk-Server VM
 
-# Download Splunk Enterprise
+Download Splunk Enterprise
 ```wget -O splunk-9.1.2-2b6e6e66d8a6-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-2b6e6e66d8a6-linux-2.6-amd64.deb"```
 
 # Install Splunk
@@ -162,24 +162,24 @@ After reboot, login with your credentials:
 # Enable Splunk to start on boot
 ```sudo /opt/splunk/bin/splunk enable boot-start```
 
-# Access Splunk Web UI
-# From your host machine, open browser to http://<VM_IP>:8000
-# Default credentials: admin/changeme (change password immediately)
+ Access Splunk Web UI
+ From your host machine, open browser to http://<VM_IP>:8000
+ Default credentials: admin/changeme (change password immediately)
 
 # Step 7: Create and Configure Forwarder VMs
 
-# Create additional VMs for log collection (repeat Step 3 for each forwarder VM)
+ Create additional VMs for log collection (repeat Step 3 for each forwarder VM)
 
 # For each forwarder VM:
-# - Name: e.g., Forwarder-1, Forwarder-2
-# - Memory: 2048 MB (2GB)
-# - CPUs: 1
-# - Storage: 20 GB
-# - Install Ubuntu Server 22.04 LTS (same as Splunk server)
+ - Name: e.g., Forwarder-1, Forwarder-2
+ - Memory: 2048 MB (2GB)
+ - CPUs: 1
+ - Storage: 20 GB
+ - Install Ubuntu Server 22.04 LTS (same as Splunk server)
 
 # After Ubuntu installation on forwarder VM:
 
-# Update system
+ Update system
 ```sudo apt update && sudo apt upgrade -y```
 
 # Install required packages
@@ -206,18 +206,18 @@ After reboot, login with your credentials:
 ```sudo /opt/splunkforwarder/bin/splunk enable boot-start```
 
 # Verify forwarder connection
-# On Splunk server, check Forwarder Management in Settings > Forwarder Management
+On Splunk server, check Forwarder Management in Settings > Forwarder Management
 
 # Step 8: Create Splunk Dashboards
 
-## 8.1 Access Splunk Web Interface
+* 8.1 Access Splunk Web Interface
 ```
 1. Open web browser on your host machine
 2. Navigate to http://<SPLUNK_SERVER_IP>:8000
 3. Login with admin credentials (admin/changeme - or your new password)
 ```
 
-## 8.2 Create Security Overview Dashboard
+* 8.2 Create Security Overview Dashboard
 
 **Via GUI:**
 ```
@@ -339,7 +339,7 @@ Type :wq
 Press ENTER
 ```
 
-## 8.4 Refresh Splunk and View Dashboard
+* 8.4 Refresh Splunk and View Dashboard
 
 ```bash
 # Restart Splunk to load new dashboard
@@ -356,7 +356,7 @@ sudo /opt/splunk/bin/splunk restart
 4. Monitor real-time security events!
 ```
 
-## 8.5 Verify Data is Being Collected
+* 8.5 Verify Data is Being Collected
 
 Before dashboards display data, verify logs are being ingested:
 
@@ -368,13 +368,13 @@ Before dashboards display data, verify logs are being ingested:
 5. If no data, check forwarder connectivity in Settings > Forwarder Management
 ```
 
-## Dashboard Best Practices
+* Dashboard Best Practices
 
 - **Refresh Rate:** Set to 5-10 minutes for dashboards with heavy queries
 - **Time Range:** Use appropriate ranges (-24h for daily analysis, -7d for trends)
 - **Alerts:** Add alerts to high-risk panels (Settings > Searches, Reports and Alerts)
 - **Permissions:** Share dashboards with SOC team (Sharing & Permissions)
 
-## Example Dashboard
+* Example Dashboard
 
 ![Dashboard](../IMG/dashboard.png)
