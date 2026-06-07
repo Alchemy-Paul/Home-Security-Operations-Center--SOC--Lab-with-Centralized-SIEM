@@ -1,5 +1,16 @@
 # Architecture
 
+## Table of Contents
+- [Architecture Diagram](#architecture-diagram)
+- [Features](#features)
+- [Technical Stack](#technical-stack)
+- [Project Components](#project-components)
+- [Central SIEM Infrastructure](#1-central-siem-infrastructure)
+- [Distributed Forwarders](#2-distributed-forwarders)
+- [Detection Rules](#3-detection-rules)
+- [Monitoring Dashboards](#4-monitoring-dashboards)
+- [Skills Developed](#skills-developed)
+
 ## Architecture Diagram
 ```
 [Pop!_OS Host] ──► [Splunk Server VM] ◄── [Additional VMs]

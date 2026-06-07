@@ -1,5 +1,21 @@
 # Installation Guide
 
+## Table of Contents
+- [Step 1: Install KVM and Virtualization Tools](#step-1-install-kvm-and-virtualization-tools)
+- [Step 2: Verify KVM Installation](#step-2-verify-kvm-installation)
+- [Step 3: Download Ubuntu Server ISO](#step-3-download-ubuntu-server-iso)
+- [Step 4: Create the Splunk Server VM in virt-manager](#step-4-create-the-splunk-server-vm-in-virt-manager)
+- [Step 5: Install Ubuntu Server](#step-5-install-ubuntu-server)
+- [Step 6: Initial Splunk Server Setup](#step-6-initial-splunk-server-setup)
+- [Step 7: Install Splunk Enterprise](#step-7-install-splunk-enterprise)
+- [Step 8: Access Splunk Web UI](#step-8-access-splunk-web-ui)
+- [Step 9: Create and Configure Forwarder VMs](#step-9-create-and-configure-forwarder-vms)
+- [Step 10: Basic Splunk Dashboard Setup](#step-10-basic-splunk-dashboard-setup)
+- [8.3 Create Custom Dashboard via XML (Advanced)](#83-create-custom-dashboard-via-xml-advanced)
+- [8.4 Refresh Splunk and View Dashboard](#84-refresh-splunk-and-view-dashboard)
+- [8.5 Verify Data is Being Collected](#85-verify-data-is-being-collected)
+- [Dashboard Best Practices](#dashboard-best-practices)
+
 ## Step 1: Install KVM and Virtualization Tools
 
 Run these commands on your Linux host:

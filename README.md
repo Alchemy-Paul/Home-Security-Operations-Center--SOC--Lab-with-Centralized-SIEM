@@ -3,6 +3,14 @@
 ## Overview
 This project documents a home SOC lab built around Splunk Enterprise and Splunk Universal Forwarder. It covers KVM/QEMU virtualization on Pop!_OS, centralized log collection, dashboard creation, and threat detection use cases.
 
+## Table of Contents
+- [Overview](#overview)
+- [What’s included](#whats-included)
+- [Repository structure](#repository-structure)
+- [Getting started](#getting-started)
+- [Key components](#key-components)
+- [Notes](#notes)
+
 ## What’s included
 - Central SIEM architecture using Splunk Enterprise
 - Distributed forwarder setup and log ingestion
