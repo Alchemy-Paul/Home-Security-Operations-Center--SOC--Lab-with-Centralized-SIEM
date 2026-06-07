@@ -1,4 +1,6 @@
-## Architecture
+# Architecture
+
+## Architecture Diagram
 ```
 [Pop!_OS Host] ──► [Splunk Server VM] ◄── [Additional VMs]
   (Forwarder)         (Indexer)              (Forwarders)
@@ -25,7 +27,7 @@
 ## Project Components
 
 ### 1. Central SIEM Infrastructure
-- Splunk Enterprise deployed on dedicated VM
+- Splunk Enterprise deployed on a dedicated VM
 - 4GB RAM, 2 vCPUs, 40GB storage
 - Receiving data on port 9997
 - Web interface on port 8000
